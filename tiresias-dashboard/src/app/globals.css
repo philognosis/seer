@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 98%;
+    --primary: 210 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 10% 25%;
+    --secondary-foreground: 0 0% 98%;
+    --accent: 150 60% 50%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 10% 30%;
+    --input: 210 10% 25%;
+    --ring: 210 100% 60%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  /* Enhanced focus styles for accessibility */
+  :focus-visible {
+    @apply outline-none ring-[3px] ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Ensure minimum touch target size */
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Screen reader only class */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Skip link styles */
+  .skip-link {
+    @apply sr-only;
+  }
+
+  .skip-link:focus {
+    @apply not-sr-only fixed top-4 left-4 z-50 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold
+           hover:opacity-90 focus-visible:ring-[3px] focus-visible:ring-ring
+           transition-opacity min-h-[44px] inline-flex items-center justify-center;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground px-6 py-3 rounded-lg font-semibold
+           hover:opacity-90 focus-visible:ring-[3px] focus-visible:ring-ring
+           transition-opacity min-h-[44px] inline-flex items-center justify-center;
+  }
+
+  .input-field {
+    @apply bg-input text-foreground border border-border rounded-lg px-4 py-3
+           focus-visible:ring-[3px] focus-visible:ring-ring focus-visible:border-primary
+           min-h-[44px] w-full text-base;
+  }
+
+  .card {
+    @apply bg-secondary/50 border border-border rounded-xl p-6;
+  }
+}
